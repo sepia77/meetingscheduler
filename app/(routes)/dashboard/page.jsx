@@ -4,8 +4,8 @@ import { useUser } from "@clerk/nextjs";
 import { UserButton } from '@clerk/nextjs'
 import React from 'react'
 import { getFirestore } from "firebase/firestore";
-import { app } from "../../FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import { app } from '../../FirebaseConfig';
 
 function Dashboard() {
   const db = getFirestore(app);
