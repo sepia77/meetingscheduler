@@ -1,4 +1,5 @@
-"use client";
+"use client"; 
+
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { ChevronDown } from "lucide-react";
@@ -9,26 +10,24 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
+} from "@/components/ui/dropdown-menu";
 
 function DashboardHeader() {
   const { user } = useUser();
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
+    setHasMounted(true); // This prevents rendering before hydration
   }, []);
 
-  if (!hasMounted) return null; // Avoid hydration mismatch
+  if (!hasMounted) return null; // Prevent mismatch during SSR
 
   return user && (
     <div className="p-4 px-20">
-
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <div className="flex items-center gap-2 float-right mr-500">
-            <h1 className="font-bold bg-blue-600 capitalize">{user?.fullName}</h1>
+        <div className="flex float-right ml-230">
+        <h1 className="font-bold bg-amber-100 capitalize border-b-stone-950 ">{user?.fullName}</h1>
             <ChevronDown />
           </div>
         </DropdownMenuTrigger>
@@ -36,12 +35,11 @@ function DashboardHeader() {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Home</DropdownMenuItem>
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
-
     </div>
   );
 }
