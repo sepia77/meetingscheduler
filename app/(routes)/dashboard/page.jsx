@@ -7,6 +7,7 @@ import { getFirestore } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { app } from '../../FirebaseConfig';
 import { useRouter } from "next/navigation";
+import MeetingType from "./meeting-type/page";
 
 
 function Dashboard() {
@@ -60,8 +61,7 @@ function Dashboard() {
 
   return (
     <div>
-      Dashboard
-      <UserButton />
+      <MeetingType/>
     </div>
   );
 }
